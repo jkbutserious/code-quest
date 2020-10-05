@@ -19,7 +19,7 @@ function Quest(props) {
   )
 }
 
-Post.propTypes = {
+Quest.propTypes = {
   name: PropTypes.string,
   progLang: PropTypes.string,
   code: PropTypes.number,
