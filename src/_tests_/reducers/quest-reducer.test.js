@@ -18,7 +18,7 @@ describe('questReducer', () => {
   test('Should successfully add a new quest to the QuestList', () => {
     const { name, progLang, code, bounty, id } = questData;
     action ={
-      type: 'ADD_POST',
+      type: 'ADD_QUEST',
       name: name,
       progLang: progLang,
       code: code,
@@ -26,7 +26,7 @@ describe('questReducer', () => {
       id: id
     };
 
-    expect(QuestListReducer({}, action)).toEqual({
+    expect(questReducer({}, action)).toEqual({
       [id] : {
         name: name,
         progLang: progLang,

@@ -1,7 +1,7 @@
 export default (state = {}, action) => {
   const { name, progLang, code, bounty, id } = action;
   switch (action.type) {
-    case 'ADD_POST':
+    case 'ADD_QUEST':
       return Object.assign({}, state, {
         [id]: {
           name: name,
