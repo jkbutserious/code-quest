@@ -15,4 +15,26 @@ describe('questReducer', () => {
     expect(questReducer({}, { type: null })).toEqual({});
   });
   
+  test('Should successfully add a new quest to the QuestList', () => {
+    const { name, progLang, code, bounty, id } = questData;
+    action ={
+      type: 'ADD_POST',
+      name: name,
+      progLang: progLang,
+      code: code,
+      bounty: bounty,
+      id: id
+    };
+
+    expect(QuestListReducer({}, action)).toEqual({
+      [id] : {
+        name: name,
+        progLang: progLang,
+        code: code,
+        bounty: bounty,
+        id: id
+      }
+    })
+  })
+
 })
