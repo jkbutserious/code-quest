@@ -16,7 +16,7 @@ function QuestList(props) {
   return (
     <React.Fragment>
       <hr />
-      {Object.values(props.questList).map((post) =>
+      {Object.values(props.questList).map((quest) =>
         <Quest
           name={quest.name}
           progLang={quest.progLang}

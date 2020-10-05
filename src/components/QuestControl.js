@@ -3,7 +3,7 @@ import QuestList from './QuestList';
 import { connect } from 'react-redux';
 import PropTypes from "prop-types";
 import QuestEdit from './QuestEdit';
-import QuestDetail from './QuestDetail';
+import QuestDetail from './QuestDetails';
 import NewQuestForm from './NewQuestForm';
 
 class QuestControl extends React.Component {
