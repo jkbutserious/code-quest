@@ -14,6 +14,17 @@ Users will earn this currency by (obviously) completing quests, but will also ha
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Specifications
+
+| Behavior | Input | Output |  Completed(Y/N?)  |
+| -------- | ----- | ------ | -------- |
+| Create a quest object | Click **Add Quest** button | A new quest object is created | N |
+| Add the new quest object to a master list | N/A | Quest is added to the master list of quests and displayed on the page | N |
+| Click a quest to see its details | Click a quest div on the master quest list | Load quest details component | N |
+| Claim a quest to work on | Click the **Claim Quest** button on a quest details page | Quest is added to a list of your active quests | N |
+| Solve a quest | Enter a solution in a text/code editor block and click the **Submit** button on an active quest | Your solution is posted to the quest details page | N |
+| Complete a quest | Click the **Accept Solution** button on the quest details page of a quest you own | Quest is marked as *Complete* | N |
+
 ## Available Scripts
 
 In the project directory, you can run:
