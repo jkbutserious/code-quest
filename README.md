@@ -1,3 +1,11 @@
+# Code Quest
+
+#### React and JavaScript Capstone Exercise for Epicodus, 10.05.2020
+
+## By Jeff Kim
+
+## Description
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
