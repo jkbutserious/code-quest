@@ -25,6 +25,37 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 | Solve a quest | Enter a solution in a text/code editor block and click the **Submit** button on an active quest | Your solution is posted to the quest details page | N |
 | Complete a quest | Click the **Accept Solution** button on the quest details page of a quest you own | Quest is marked as *Complete* | N |
 
+## Setup/Installation Requirements
+
+**Requirements:**
+* [Node JS - Latest Version](https://nodejs.org/en/)
+
+**To use this program:**
+
+1. Open your preferred browser.
+2. Navigate to https://github.com/jkbutserious/code-quest.git.
+3. Click the **Code** button and click **Download ZIP** to clone the repository to your computer.
+4. Open the Windows PowerShell console, VS Code Bash terminal, or the MacOS Terminal and use the ``cd [YOUR DOWNLOAD FILEPATH]/code-quest`` command to navigate to the Factory subdirectory.
+5. Use the ``npm run start`` command to run the program.
+6. Use the web interface to add kegs to the list and keep track of the pints left.
+7. If you have any issues running this program, please reach out to the developer or troubleshoot at your own risk.
+
+**To contribute to this project:**
+
+1. Open your preferred browser.
+2. Navigate to https://github.com/jkbutserious/code-quest.
+3. Log into or sign up for your GitHub account.
+4. Click the **Fork** button to copy the repository and all source code.
+5. From your forked repository, you can download or clone the repository, by clicking the **Code** button.
+  * To clone the repository in Visual Studio Code's terminal, use the command
+
+    ```git clone https://github.com/[YOUR-USER-NAME-HERE]/code-quest```
+  * To clone the repository in GitHub Desktop, click the **Open in Desktop** option
+  * To download the repository, click the **Download ZIP** option, save the archive to your computer, and extract it to the folder of your choice
+6. Use your preferred code editor to edit the appropriate script files.
+7. Save any changes you make in your code editor and use your preferred git solution to commit your changes.
+8. Push your changes to your forked repository.
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -91,3 +122,29 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+#### Additional Setup/Installation Notes:
+
+* No additional code  or installations are necessary to view this project.   
+
+## Known Bugs
+
+_No known issues. Please contact me if you have any problems._
+
+
+## Support and contact details
+
+To report any issues with this page or to contribute to this project, contact Jeff Kim at kim2jy@hotmail.com.
+
+## Technologies Used
+
+* JavaScript
+* React
+* Redux
+* Node JS
+* Visual Studio Code 
+* Git and Git BASH 
+
+
+### License
+
+Copyright © 2020 Jeffrey Kim
