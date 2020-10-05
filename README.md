@@ -6,6 +6,10 @@
 
 ## Description
 
+This capstone project is designed to present the concept of StackOverflow and other such code help sites and present it in a highly gamified form. The format will be similar to an RPG quest board, where users will be able to post code help requests in the form of "quests". Users can post details related to their quest, such as their preferred coding language, project objectives/details, and any additional goals they may have. Users who post quests can also post a "bounty", which will be a reward of virtual currency that will be given to the first person who successfully completes the code request.
+
+Users will earn this currency by (obviously) completing quests, but will also have methods to earn currency passively so that no one will ever be left without the ability to post or complete requests. Daily activities such as quizzes, user participation events, and other interactions will allow them to earn and save nominal amounts of currency so that the community will remain accessible to anyone, regardless of their skill level. Beyond that, currency use can be extrapolated to any number of stretch features, such as promoting your own quest or adding onto the bounty of a quest you would like to know the answer to, as well. Eventually, corporate sponsors may even be able to introduce "Legendary Quests" similar to bug bounties that require community participation to complete.
+
 ![Code Quest Diagram](./Code_Quest_Diagram.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
