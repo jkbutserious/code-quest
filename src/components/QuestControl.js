@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import QuestEdit from './QuestEdit';
 import QuestDetail from './QuestDetails';
 import NewQuestForm from './NewQuestForm';
+import * as c from '../actions';
 
 class QuestControl extends React.Component {
 
@@ -42,7 +43,7 @@ class QuestControl extends React.Component {
 
   handleAddNewQuest = (newQuest) => {
     const { dispatch } = this.props;
-    const action = a.toggleForm()
+    const action = c.toggleForm()
     dispatch(action);
     // const { name, progLang, code, bounty } = newQuest;
     // const action = {
