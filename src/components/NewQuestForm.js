@@ -11,7 +11,7 @@ function NewQuestForm(props){
       name: event.target.name.value, 
       progLang: event.target.progLang.value, 
       code: event.target.code.value,
-      bounty: 0,
+      bounty: event.target.bounty.value,
       id: v4()});
   }
 
