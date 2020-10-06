@@ -42,21 +42,21 @@ class QuestControl extends React.Component {
 
   handleAddNewQuest = (newQuest) => {
     const { dispatch } = this.props;
-    const { id, name, progLang, code, bounty } = newQuest;
-    const action = {
-      type: 'ADD_QUEST',
-      id: id,
-      name: name,
-      progLang: progLang,
-      code: code,
-      bounty: bounty
-    }
+    const action = a.toggleForm()
     dispatch(action);
-    this.setState({
-      formVisibleOnPage: false,
-      selectedPost: null,
-      editing: false
-    });
+    // const { name, progLang, code, bounty } = newQuest;
+    // const action = {
+    //   type: 'ADD_QUEST',
+      // id: id,
+      // name: name,
+      // progLang: progLang,
+      // code: code,
+      // bounty: bounty
+    // this.setState({
+    //   formVisibleOnPage: false,
+    //   selectedPost: null,
+    //   editing: false
+    // });
   }
 
   handleEditingQuest = (questToEdit) => {
