@@ -59,6 +59,34 @@ class QuestControl extends React.Component {
     });
   }
 
+  handleEditingQuest = (questToEdit) => {
+    const { dispatch } = this.props;
+    const { id, name, progLang, code, bounty } = questToEdit;
+    const action = {
+      type: 'ADD_QUEST',
+      id: id,
+      name: name,
+      progLang: progLang,
+      code: code,
+      bounty: bounty
+    }
+    dispatch(action);
+    this.setState({
+      editing: false,
+      selectedQuest: null
+    });
+  }
+
+  handleDeletingQuest = (id) => {
+    const { dispatch } = this.props;
+    const action = {
+      type: 'DELETE_QUEST',
+      id: id
+    }
+    dispatch(action);
+    this.setState({ selectedQuest: null });
+  }
+
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;

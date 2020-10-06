@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './Header'
 import QuestControl from './QuestControl.js';
 import { Container } from 'react-bootstrap';
-// import './App.css';
+import './App.css';
 
 function App() {
   return (
