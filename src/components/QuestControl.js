@@ -6,6 +6,7 @@ import QuestEdit from './QuestEdit';
 import QuestDetail from './QuestDetails';
 import NewQuestForm from './NewQuestForm';
 import * as c from '../actions';
+import { withFirestore } from 'react-redux-firebase'
 
 class QuestControl extends React.Component {
 
@@ -39,6 +40,19 @@ class QuestControl extends React.Component {
     this.setState({
       selectedQuest: newSelectQuest
     })
+  }
+
+  handleChangingSelectedQuest = (id) => {
+    this.props.firestore.get({collection: 'quests', doc: id}).then((quest) => {
+      const firestoreQuest = {
+        name: quest.get("name"),
+        progLang: quest.get("progLang"),
+        code: quest.get("code"),
+        bounty: quest.get("bounty"),
+        id: quest.id
+      }
+      this.setState({selectedQuest: firestoreQuest });
+    });
   }
 
   handleAddNewQuest = (newQuest) => {
@@ -133,4 +147,4 @@ const mapStateToProps = state => {
   }
 }
 QuestControl = connect(mapStateToProps)(QuestControl);
-export default QuestControl;
+export default withFirestore(QuestControl);

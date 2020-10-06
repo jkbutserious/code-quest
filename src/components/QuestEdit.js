@@ -1,12 +1,24 @@
 import React from "react";
 import ReusableForm from "./ReusableForm";
 import PropTypes from "prop-types";
+import { useFirestore } from 'react-redux-firebase'
 
 function QuestEdit(props) {
+  const firestore = useFirestore();
+
   // const { post } = props;
+
   function handleQuestEditSubmission(event) {
     event.preventDefault();
-    props.onEditPost({ name: event.target.name.value, progLang: event.target.progLang.value, code: event.target.code.value, bounty: event.target.bounty.value, id: event.target.id.value });
+    props.onEditQuest()
+    const propertiesToUpdate = { 
+      name: event.target.name.value, 
+      progLang: event.target.progLang.value, 
+      code: event.target.code.value, 
+      bounty: event.target.bounty.value, 
+      id: event.target.id.value 
+    }
+    return firestore.update({collection: 'quests', doc: quest.id }, propertiesToUpdate)
   }
 
   return (
