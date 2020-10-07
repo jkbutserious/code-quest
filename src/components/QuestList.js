@@ -26,7 +26,7 @@ function QuestList(props) {
           code={quest.code}
           bounty={quest.bounty}
           id={quest.id}
-          key={quest.key}/>
+          key={quest.id}/>
         })}
       </React.Fragment>
     );

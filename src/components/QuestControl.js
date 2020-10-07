@@ -3,7 +3,7 @@ import QuestList from './QuestList';
 import { connect } from 'react-redux';
 import PropTypes from "prop-types";
 import QuestEdit from './QuestEdit';
-import QuestDetail from './QuestDetails';
+import QuestDetail from './QuestDetail';
 import NewQuestForm from './NewQuestForm';
 import * as c from '../actions';
 import { withFirestore } from 'react-redux-firebase'
@@ -27,20 +27,25 @@ class QuestControl extends React.Component {
       });
     }
     else {
-      this.setState(prevState => ({
-        formVisibleOnPage: !prevState.formVisibleOnPage
-      }));
+      const { dispatch } = this.props;
+      const action = c.toggleForm;
+      dispatch(action);
     }
+    // else {
+    //   this.setState(prevState => ({
+    //     formVisibleOnPage: !prevState.formVisibleOnPage
+    //   }));
+    // }
   }
 
-  handleSelectingQuest = (id) => {
-    console.log(id);
-    const newSelectQuest = this.props.masterQuestList[id]
-    console.log(newSelectQuest)
-    this.setState({
-      selectedQuest: newSelectQuest
-    })
-  }
+  // handleSelectingQuest = (id) => {
+  //   console.log(id);
+  //   const newSelectQuest = this.props.masterQuestList[id]
+  //   console.log(newSelectQuest)
+  //   this.setState({
+  //     selectedQuest: newSelectQuest
+  //   })
+  // }
 
   handleChangingSelectedQuest = (id) => {
     this.props.firestore.get({collection: 'quests', doc: id}).then((quest) => {
@@ -55,7 +60,7 @@ class QuestControl extends React.Component {
     });
   }
 
-  handleAddNewQuest = (newQuest) => {
+  handleAddNewQuest = () => {
     const { dispatch } = this.props;
     const action = c.toggleForm()
     dispatch(action);
@@ -74,18 +79,18 @@ class QuestControl extends React.Component {
     // });
   }
 
+  // handleEditingQuest = (questToEdit) => {
+    // const { dispatch } = this.props;
+    // const { id, name, progLang, code, bounty } = questToEdit;
+    // const action = {
+    //   type: 'ADD_QUEST',
+    //   id: id,
+    //   name: name,
+    //   progLang: progLang,
+    //   code: code,
+    //   bounty: bounty
+    // }
   handleEditingQuest = (questToEdit) => {
-    const { dispatch } = this.props;
-    const { id, name, progLang, code, bounty } = questToEdit;
-    const action = {
-      type: 'ADD_QUEST',
-      id: id,
-      name: name,
-      progLang: progLang,
-      code: code,
-      bounty: bounty
-    }
-    dispatch(action);
     this.setState({
       editing: false,
       selectedQuest: null
@@ -93,13 +98,15 @@ class QuestControl extends React.Component {
   }
 
   handleDeletingQuest = (id) => {
-    const { dispatch } = this.props;
-    const action = {
-      type: 'DELETE_QUEST',
-      id: id
-    }
-    dispatch(action);
-    this.setState({ selectedQuest: null });
+    this.props.firestore.delete({collection: 'quests', doc: id});
+    this.setState({selectedQuest: null});
+    // const { dispatch } = this.props;
+    // const action = {
+    //   type: 'DELETE_QUEST',
+    //   id: id
+    // }
+    // dispatch(action);
+    // this.setState({ selectedQuest: null });
   }
 
   render() {
@@ -115,7 +122,7 @@ class QuestControl extends React.Component {
       currentlyVisibleState = <NewQuestForm onNewQuestCreation={this.handleAddNewQuest} />
       buttonText = "Return to Quest List"
     } else {
-      currentlyVisibleState = <QuestList questList={this.props.masterQuestList} onSelectQuest={this.handleSelectingQuest} onUpVoting={this.handleVotingUp} onDownVoting={this.handleVotingDown} />
+      currentlyVisibleState = <QuestList questList={this.props.masterQuestList} onSelectQuest={this.handleChangingSelectedQuest} onUpVoting={this.handleVotingUp} onDownVoting={this.handleVotingDown} />
       buttonText = "Add Quest"
     }
     return (

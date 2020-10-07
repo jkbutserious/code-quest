@@ -6,6 +6,8 @@ import { useFirestore } from 'react-redux-firebase'
 function QuestEdit(props) {
   const firestore = useFirestore();
 
+  const { quest } = props;
+
   // const { post } = props;
 
   function handleQuestEditSubmission(event) {
