@@ -20,3 +20,8 @@ export const deleteQuest = id => ({
 export const toggleForm = () => ({
   type: c.TOGGLE_FORM
 });
+
+export const selectQuest = (id) => ({
+  type: c.SELECT_QUEST,
+  id
+})

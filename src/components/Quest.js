@@ -1,10 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { useDispatch } from 'react-redux';
+import * as c from '../actions';
 
 function Quest(props) {
+  const dispatch = useDispatch();
   return (
     <React.Fragment>
-      <div onClick={() => props.whenQuestClicked(props.id)}>
+      {/* <div onClick={() => props.whenQuestClicked(props.id)}> */}
+      <div onClick={() => dispatch(c.selectQuest(props.id))}>
         <h3>Quest Name: {props.name}</h3>
         {/* <h3>Programming Language: {props.progLang}</h3>
         <h3>Code: {props.code}</h3>

@@ -28,7 +28,7 @@ class QuestControl extends React.Component {
     }
     else {
       const { dispatch } = this.props;
-      const action = c.toggleForm;
+      const action = c.toggleForm();
       dispatch(action);
     }
     // else {
@@ -47,18 +47,18 @@ class QuestControl extends React.Component {
   //   })
   // }
 
-  handleChangingSelectedQuest = (id) => {
-    this.props.firestore.get({collection: 'quests', doc: id}).then((quest) => {
-      const firestoreQuest = {
-        name: quest.get("name"),
-        progLang: quest.get("progLang"),
-        code: quest.get("code"),
-        bounty: quest.get("bounty"),
-        id: quest.id
-      }
-      this.setState({selectedQuest: firestoreQuest });
-    });
-  }
+  // handleChangingSelectedQuest = (id) => {
+  //   this.props.firestore.get({collection: 'quests', doc: id}).then((quest) => {
+  //     const firestoreQuest = {
+  //       name: quest.get("name"),
+  //       progLang: quest.get("progLang"),
+  //       code: quest.get("code"),
+  //       bounty: quest.get("bounty"),
+  //       id: quest.id
+  //     }
+  //     this.setState({selectedQuest: firestoreQuest });
+  //   });
+  // }
 
   handleAddNewQuest = () => {
     const { dispatch } = this.props;
@@ -112,17 +112,17 @@ class QuestControl extends React.Component {
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
-    if (this.selectedQuest != null) {
-      currentlyVisibleState = <QuestDetail questDetail={this.selectedQuest} />
+    if (this.props.selectedQuest != null) {
+      currentlyVisibleState = <QuestDetail /* questDetail={this.props.selectedQuest} */ />
     } else if (this.state.editing) {
-      currentlyVisibleState = <QuestEdit quest={this.state.selectedQuest} onEditQuest=
+      currentlyVisibleState = <QuestEdit quest={this.props.selectedQuest} onEditQuest=
         {this.handleEditingQuest} />
       buttonText = "Return to Quests";
     } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewQuestForm onNewQuestCreation={this.handleAddNewQuest} />
       buttonText = "Return to Quest List"
     } else {
-      currentlyVisibleState = <QuestList questList={this.props.masterQuestList} onSelectQuest={this.handleChangingSelectedQuest} onUpVoting={this.handleVotingUp} onDownVoting={this.handleVotingDown} />
+      currentlyVisibleState = <QuestList /* questList={this.props.masterQuestList} */ /* onSelectQuest={this.handleChangingSelectedQuest} */ onUpVoting={this.handleVotingUp} onDownVoting={this.handleVotingDown} />
       buttonText = "Add Quest"
     }
     return (
@@ -146,12 +146,14 @@ QuestControl.propTypes = {
   masterQuestList: PropTypes.object
 };
 const mapStateToProps = state => {
-  const stateToArray = Object.values(state);
-  const sortedStateArray = stateToArray.sort(function(a, b) {return (b.score - a.score)})
-  const returnObj = convertArrayToObj(sortedStateArray, 'id');
-  return {
-    masterQuestList: returnObj
-  }
+  // console.log(state);
+  // const stateToArray = Object.values(state);
+  // const sortedStateArray = stateToArray.sort(function(a, b) {return (b.score - a.score)})
+  // const returnObj = convertArrayToObj(sortedStateArray, 'id');
+  // return {
+  //   masterQuestList: returnObj
+  // }
+  return { selectedQuest: state.selectedQuest }
 }
 QuestControl = connect(mapStateToProps)(QuestControl);
 export default withFirestore(QuestControl);

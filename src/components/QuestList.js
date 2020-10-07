@@ -20,7 +20,7 @@ function QuestList(props) {
         <hr/>
         {quests.map((quest) => {
           return <Quest
-          whenQuestClicked = { props.onSelectQuest }
+          // whenQuestClicked = { props.onSelectQuest }
           name={quest.name}
           progLang={quest.progLang}
           code={quest.code}
