@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 function QuestDetail(props) {
 
   const selectedQuestId = useSelector(state => state.selectedQuest);
-  const quest = useSelector(state => state.firestore.ordered.quests[selectedQuestId])
+  const quest = useSelector(state => state.firestore.data.quests[selectedQuestId])
   return (
     <React.Fragment>
       <h3>Quest Name: {quest.name}</h3>
