@@ -6,7 +6,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 function Header(props) {
   return (
     <React.Fragment>
-      <Navbar.Brand href = "#home"><h1>Code Quest</h1></Navbar.Brand>
+      <Navbar.Brand href = "/"><h1>Code Quest</h1></Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className ="mr-auto">
