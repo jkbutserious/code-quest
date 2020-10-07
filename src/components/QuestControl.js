@@ -6,7 +6,8 @@ import QuestEdit from './QuestEdit';
 import QuestDetail from './QuestDetail';
 import NewQuestForm from './NewQuestForm';
 import * as c from '../actions';
-import { withFirestore } from 'react-redux-firebase'
+import { withFirestore, isLoaded } from 'react-redux-firebase'
+import 'firebase/auth';
 
 class QuestControl extends React.Component {
 
@@ -110,29 +111,52 @@ class QuestControl extends React.Component {
   }
 
   render() {
-    let currentlyVisibleState = null;
-    let buttonText = null;
-    if (this.props.selectedQuest != null) {
-      currentlyVisibleState = <QuestDetail /* questDetail={this.props.selectedQuest} */ />
-    } else if (this.state.editing) {
-      currentlyVisibleState = <QuestEdit quest={this.props.selectedQuest} onEditQuest=
-        {this.handleEditingQuest} />
-      buttonText = "Return to Quests";
-    } else if (this.state.formVisibleOnPage) {
-      currentlyVisibleState = <NewQuestForm onNewQuestCreation={this.handleAddNewQuest} />
-      buttonText = "Return to Quest List"
-    } else {
-      currentlyVisibleState = <QuestList /* questList={this.props.masterQuestList} */ /* onSelectQuest={this.handleChangingSelectedQuest} */ onUpVoting={this.handleVotingUp} onDownVoting={this.handleVotingDown} />
-      buttonText = "Add Quest"
+    const auth = this.props.firebase.auth();
+    console.log(auth)
+
+    if (!isLoaded(auth)) {
+      return (
+        <React.Fragment>
+          <h1>Loading...</h1>
+        </React.Fragment>
+      )
     }
-    return (
-      <React.Fragment>
-        {currentlyVisibleState}
-        <button onClick={this.handleClick}>{buttonText}</button>
-      </React.Fragment>
-    );
+
+    if ((isLoaded(auth)) && (auth.currentUser == null)) {
+      console.log(auth.currentUser)
+      return (
+        <React.Fragment>
+          <h1>You must be signed in to access the Quest Queue</h1>
+        </React.Fragment>
+      )
+    }
+
+    if ((isLoaded(auth)) && (auth.currentUser != null)) {
+      let currentlyVisibleState = null;
+      let buttonText = null;
+      if (this.props.selectedQuest != null) {
+        currentlyVisibleState = <QuestDetail /* questDetail={this.props.selectedQuest} */ />
+      } else if (this.state.editing) {
+        currentlyVisibleState = <QuestEdit quest={this.props.selectedQuest} onEditQuest=
+          {this.handleEditingQuest} />
+        buttonText = "Return to Quests";
+      } else if (this.state.formVisibleOnPage) {
+        currentlyVisibleState = <NewQuestForm onNewQuestCreation={this.handleAddNewQuest} />
+        buttonText = "Return to Quest List"
+      } else {
+        currentlyVisibleState = <QuestList /* questList={this.props.masterQuestList} */ /* onSelectQuest={this.handleChangingSelectedQuest} */ />
+        buttonText = "Add Quest"
+      }
+      return (
+        <React.Fragment>
+          {currentlyVisibleState}
+          <button onClick={this.handleClick}>{buttonText}</button>
+        </React.Fragment>
+      );
+    }
   }
 }
+
 const convertArrayToObj = (array, key) => {
   const initialVal = {};
   return array.reduce((obj, item) => {
